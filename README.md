@@ -21,14 +21,15 @@ I have included the keystore and truststore from the example. The passwords for 
 
 Update the client_encryption_details in the cassandra.yaml 
 
-client_encryption_options:
+    client_encryption_options:
     enabled: true
     keystore: /Users/patcho/dev/datastax-ssl-example/src/main/resources/keystore
     keystore_password: password1
 
 The client using the default Java System properties for SSL so, pass the following properties 
-when running the ClusterConnect class.
--Djavax.net.ssl.trustStore=/Users/patcho/dev/datastax-ssl-example/src/main/resources/truststore -Djavax.net.ssl.trustStorePassword=password1
+when running the ClusterConnect class. 
+    
+    -Djavax.net.ssl.trustStore=/Users/patcho/dev/datastax-ssl-example/src/main/resources/truststore -Djavax.net.ssl.trustStorePassword=password1
 
 Troubleshooting
 ================
@@ -39,13 +40,13 @@ Cannot support TLS_RSA_WITH_AES_256_CBC_SHA with currently installed providers
 Fix detailed here -  
 http://www.pathin.org/tutorials/java-cassandra-cannot-support-tls_rsa_with_aes_256_cbc_sha-with-currently-installed-providers/
 
-e.g. For MAC
-Install jars from
-http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
-to 
-/Library/Java/JavaVirtualMachines/<JAVA_VERSION/Contents/Home/jre/lib/security
-e.g.
-/Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk/Contents/Home/jre/lib/security
+    e.g. For MAC
+    Install jars from
+    http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
+    to 
+    /Library/Java/JavaVirtualMachines/<JAVA_VERSION/Contents/Home/jre/lib/security
+    e.g.
+    /Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk/Contents/Home/jre/lib/security
 
 If you get a NoHostAvailable Exception and you know for sure your cluster is up, 
 then the problem is probably the system properties that are being sent in.

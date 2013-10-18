@@ -1,3 +1,7 @@
+Connect to Cassandra with DSE with SSL.
+========================================================
+
+This is a simple example of setting up cassandra (dse version) with ssl client to encryption. It uses a simple 
 To setup dse to use SSL we need to follow the steps in the following url
 
 http://www.datastax.com/docs/datastax_enterprise3.1/security/ssl_transport#ssl-transport
@@ -6,11 +10,11 @@ The steps are summarised below.
 
 The following commands were used to create the keystore and the truststore.
 
-keytool -genkey -alias localhost -keyalg RSA -keystore .keystore
+    keytool -genkey -alias localhost -keyalg RSA -keystore .keystore
 
-keytool -export -alias dse -file localhost.cer -keystore .keystore
+    keytool -export -alias localhost -file localhost.cer -keystore .keystore
 
-keytool -import -v -trustcacerts -alias localhost -file localhost.cer -keystore .truststore
+    keytool -import -v -trustcacerts -alias localhost -file localhost.cer -keystore .truststore
 
 
 I have included the keystore and truststore from the example. The passwords for these are both password1.

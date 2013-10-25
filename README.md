@@ -16,6 +16,10 @@ The following commands were used to create the keystore and the truststore.
 
     keytool -import -v -trustcacerts -alias localhost -file localhost.cer -keystore .truststore
 
+To connect over cqlsh, you will need to create a pem key which will be used in the .cqlshrc file
+
+    keytool -importkeystore -srckeystore .keystore -destkeystore localhost_user1.p12 -deststoretype PKCS12
+    openssl pkcs12 -in localhost_user1.p12 -out localhost_user1.pem -nodes
 
 I have included the keystore and truststore from the example. The passwords for these are both password1.
 

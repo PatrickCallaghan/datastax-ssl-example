@@ -10,14 +10,17 @@ The steps are summarised below.
 
 The following commands were used to create the keystore and the truststore (use password1 for all passwords)
 
-    keytool -genkey -alias localhost -keyalg RSA -keystore .keystore
+    //Create Keys
+    keytool -genkey -alias localhost -keyalg RSA -keysize 1024 -dname "CN=localhost, OU=TEST, O=TEST, C=UK"  -keystore .keystore -storepass cassandra -keypass cassandra
+    
+    keytool -export -alias localhost -file localhost.cer -keystore .keystore -storepass cassandra -keypass cassandra
+    
+    keytool -import -v -trustcacerts -alias localhost -file localhost.cer -keystore .truststore -storepass cassandra -keypass cassandra
 
-    keytool -export -alias localhost -file localhost.cer -keystore .keystore
-
-    keytool -import -v -trustcacerts -alias localhost -file localhost.cer -keystore .truststore
 
 To connect over cqlsh, you will need to create a pem key which will be used in the .cqlshrc file
 
+    //Create PEM for client
     keytool -importkeystore -srckeystore .keystore -destkeystore localhost_user1.p12 -deststoretype PKCS12
     
     openssl pkcs12 -in localhost_user1.p12 -out localhost_user1.pem -nodes
@@ -28,13 +31,13 @@ Update the client_encryption_details in the cassandra.yaml
 
     client_encryption_options:
     enabled: true
-    keystore: <install-loc>datastax-ssl-example/src/main/resources/keystore
-    keystore_password: password1
+    keystore: <install-loc>/.keystore
+    keystore_password: cassandra
 
 The client using the default Java System properties for SSL so, pass the following properties 
 when running the ClusterConnect class. 
     
-    -Djavax.net.ssl.trustStore=<install-loc>datastax-ssl-example/src/main/resources/truststore -Djavax.net.ssl.trustStorePassword=password1
+    -Djavax.net.ssl.trustStore=<install-loc>/.truststore -Djavax.net.ssl.trustStorePassword=cassandra
 
 Troubleshooting
 ================

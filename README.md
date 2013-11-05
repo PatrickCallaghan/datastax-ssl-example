@@ -8,7 +8,7 @@ http://www.datastax.com/docs/datastax_enterprise3.1/security/ssl_transport#ssl-t
 
 The steps are summarised below.
 
-The following commands were used to create the keystore and the truststore.
+The following commands were used to create the keystore and the truststore (use password1 for all passwords)
 
     keytool -genkey -alias localhost -keyalg RSA -keystore .keystore
 
@@ -28,13 +28,13 @@ Update the client_encryption_details in the cassandra.yaml
 
     client_encryption_options:
     enabled: true
-    keystore: /Users/patcho/dev/datastax-ssl-example/src/main/resources/keystore
+    keystore: <install-loc>datastax-ssl-example/src/main/resources/keystore
     keystore_password: password1
 
 The client using the default Java System properties for SSL so, pass the following properties 
 when running the ClusterConnect class. 
     
-    -Djavax.net.ssl.trustStore=/Users/patcho/dev/datastax-ssl-example/src/main/resources/truststore -Djavax.net.ssl.trustStorePassword=password1
+    -Djavax.net.ssl.trustStore=<install-loc>datastax-ssl-example/src/main/resources/truststore -Djavax.net.ssl.trustStorePassword=password1
 
 Troubleshooting
 ================

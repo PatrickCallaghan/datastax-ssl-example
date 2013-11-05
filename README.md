@@ -39,6 +39,24 @@ when running the ClusterConnect class.
     
     -Djavax.net.ssl.trustStore=<install-loc>/.truststore -Djavax.net.ssl.trustStorePassword=cassandra
 
+To connect through cqlsh, you will need to create a file called '.cqlshrc' in your home (~/) dir. You will need 
+to source this file or restart your terminal to make the changes visible.
+
+    The .cqlshrc file 
+    [authentication]
+    username = 
+    password = 
+
+    [connection]
+    hostname = localhost
+    port = 9160
+    factory = cqlshlib.ssl.ssl_transport_factory
+
+    [ssl]
+    certfile = <install-loc>/localhost_user1.pem
+    validate = true ## Optional, true by default.
+
+
 Troubleshooting
 ================
 

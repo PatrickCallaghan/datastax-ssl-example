@@ -60,7 +60,7 @@ to source this file or restart your terminal to make the changes visible.
 Troubleshooting
 ================
 
-There is a bug in the Java security jars which may result in the error that needs new jars.
+There is a bug in the Java security jars which may result in an error that needs new jars.
 Cannot support TLS_RSA_WITH_AES_256_CBC_SHA with currently installed providers
 
 Fix detailed here -  
@@ -70,7 +70,7 @@ http://www.pathin.org/tutorials/java-cassandra-cannot-support-tls_rsa_with_aes_2
     Install jars from
     http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
     to 
-    /Library/Java/JavaVirtualMachines/<JAVA_VERSION/Contents/Home/jre/lib/security
+    /Library/Java/JavaVirtualMachines/<JAVA_VERSION>/Contents/Home/jre/lib/security
     e.g.
     /Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk/Contents/Home/jre/lib/security
 

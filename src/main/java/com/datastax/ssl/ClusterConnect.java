@@ -8,12 +8,13 @@ public class ClusterConnect {
 	
 	public ClusterConnect(){
 			
-		Cluster cluster = Cluster.builder().addContactPoint("localhost")
+		Cluster cluster = Cluster.builder().addContactPoint("cassandra-secure1")
 				.withSSL().build();
 		
-		Session session = cluster.connect();
+		Session session = cluster.connect();		
+		System.out.println("Cluster and Session created with SSL");
 		
-		System.out.println("Cluster and Session created with SSL");	
+		session.shutdown();
 		cluster.shutdown();
 	}
 	
